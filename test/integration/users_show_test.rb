@@ -17,6 +17,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
   test "should show user profile if user account is activated" do
     log_in_as(@admin)
     get user_path(@activated_user)
-    assert_redirected_to @activated_user
+    assert_template 'users/show'
+    assert_select 'h1', @activated_user.name
   end
 end
